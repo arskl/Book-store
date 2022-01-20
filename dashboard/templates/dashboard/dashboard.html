@@ -1,0 +1,32 @@
+{% extends 'dashboard/main.html' %}
+
+{% block content %}
+<div class="card text-center">
+  <div class="card-body">
+		<div class="row">
+			<div class="col-md">
+				<div class="card card-body">
+					<table class="table">
+						<tr>
+              <th>Book Title</th>
+    					<th>Author Name</th>
+              <th>ISBN</th>
+    					<th>Price</th>
+              <th>Publication date</th>
+						</tr>
+            {% for book in books %}
+              <tr>
+                <td><small>{{book.book_title}}</small></td>
+                <td><small>{{book.authors_info}}</small></td>
+                <td><small>{{book.ISBN}}</small></td>
+                <td><small>{{book.price}}</small></td>
+                <td><small>{{book.publish_date}}</small></td>
+              </tr>
+            {% endfor %}
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

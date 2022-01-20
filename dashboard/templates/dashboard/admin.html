@@ -1,0 +1,55 @@
+{% extends 'dashboard/main.html' %}
+
+{% block content %}
+<div class="card text-center">
+  <div class="card-header">
+    <ul class="nav nav-tabs card-header-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="true" href="">Book list</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-secondary" href="{% url 'book-manipulation-log' %}">Book manipulation log</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-secondary" href="{% url 'http-request-log' %}">HTTP request log</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white bg-primary" href="{% url 'book-create' %}">Add new book</a>
+      </li>
+    </ul>
+  </div>
+  <div class="card-body">
+		<div class="row">
+			<div class="col-md">
+				<div class="card card-body">
+					<table class="table">
+						<tr>
+              <th>Book Title</th>
+    					<th>Author Name</th>
+              <th>ISBN</th>
+    					<th>Price</th>
+              <th>Publication date</th>
+              <th><center></center></th>
+						</tr>
+            {% for book in books %}
+              <tr>
+                <td><small>{{book.book_title}}</small></td>
+                <td><small>{{book.authors_info}}</small></td>
+                <td><small>{{book.ISBN}}</small></td>
+                <td><small>{{book.price}}</small></td>
+                <td><small>{{book.publish_date}}</small></td>
+                <td>
+                  <center><div class="btn-group btn-group-sm">
+                    <a href="{% url 'book-update' book.id %}" class="btn btn-light">Edit</a>
+                    <a href="{% url 'book-delete' book.id %}" class="btn btn-light">Delete</a>
+                  </div></center>
+                </td>
+              </tr>
+            {% endfor %}
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

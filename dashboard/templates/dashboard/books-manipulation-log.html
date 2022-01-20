@@ -1,0 +1,40 @@
+{% extends 'dashboard/main.html' %}
+
+{% block content %}
+<div class="card text-center">
+  <div class="card-header">
+    <ul class="nav nav-tabs card-header-tabs">
+      <li class="nav-item">
+        <a class="nav-link text-secondary" aria-current="true" href="{% url 'admin' %}">Book list</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="{% url 'book-manipulation-log' %}">Book manipulation log</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-secondary" href="{% url 'http-request-log' %}">HTTP request log</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white bg-primary" href="{% url 'book-create' %}">Add new book</a>
+      </li>
+    </ul>
+  </div>
+  <div class="card-body">
+		<div class="row">
+			<div class="col-md">
+				<div class="card card-body">
+					<table class="table">
+						<tr>
+              <th>Book manipulation log entries:</th>
+						</tr>
+            {% for log in logs %}
+              <tr>
+                <td><small>{{log.crud_log}}</small></td>
+              </tr>
+            {% endfor %}
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
